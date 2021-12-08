@@ -17,6 +17,7 @@ import org.example.demo.product.entity.Product;
 import org.example.demo.product.entity.ProductComment;
 import org.example.demo.product.repository.ProductCommentRepository;
 import org.example.demo.product.repository.ProductRepository;
+import org.example.demo.product.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,10 @@ public class ProductEndpoint {
     @Autowired
     @Qualifier(value = "restTemplate")
     private RestTemplate restTemplate;
+
+    @Autowired
+    private UserService userService;
+
 
     /**
      * 获取商品列表
@@ -107,7 +112,6 @@ public class ProductEndpoint {
      */
     protected UserDto loadUser(Long userId) {
         //通过在eureka注册的服务名来调用对应接口 restTemplate注意要加@LoadBalanced注解
-        UserDto userDto = this.restTemplate.getForEntity("http://01CLIENT-2/users/{id}", UserDto.class, userId).getBody();
-        return userDto;
+        return userService.load(userId);
     }
 }
