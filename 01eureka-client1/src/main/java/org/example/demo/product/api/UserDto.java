@@ -32,7 +32,7 @@ public class UserDto implements Serializable {
     private Long id;
     private String nickname;                                // 昵称
     private String avatar;                                  // 用户头像
-
+    private int userServicePort;                            // 用户服务端口
     public UserDto() {
 
     }
@@ -43,16 +43,6 @@ public class UserDto implements Serializable {
         this.avatar = avatar;
     }
 
-    @Override
-    public String toString() {
-        return this.toStringHelper().toString();
-    }
-
-    protected MoreObjects.ToStringHelper toStringHelper() {
-        return MoreObjects.toStringHelper(this)
-                .add("id", getId())
-                .add("nickname", getNickname());
-    }
 
     // ========================================================================
     // setter/getter ==========================================================
@@ -75,5 +65,22 @@ public class UserDto implements Serializable {
     }
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public int getUserServicePort() {
+        return userServicePort;
+    }
+    public void setUserServicePort(int userServicePort) {
+        this.userServicePort = userServicePort;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "id=" + id +
+                ", nickname='" + nickname + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", userServicePort=" + userServicePort +
+                '}';
     }
 }

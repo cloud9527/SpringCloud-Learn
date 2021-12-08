@@ -82,17 +82,4 @@ public class UserEndpoint {
         return true;
     }
 
-
-    /**
-     * 获取用户列表
-     *
-     * @return
-     */
-    @RequestMapping(value = "/prds",method = RequestMethod.GET)
-    public String findProducts() {
-        //通过eureka中注册的应用名去调用
-        return restTemplate.getForEntity("http://01CLIENT-1/products/all", String.class).getBody();
-    }
-
-
 }

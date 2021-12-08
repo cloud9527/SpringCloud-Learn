@@ -34,14 +34,17 @@ public class UserDto implements Serializable {
     private String nickname;                                // 昵称
     private String avatar;                                  // 用户头像
 
+    private int userServicePort;                            // 用户服务端口
+
     public UserDto() {
 
     }
 
-    public UserDto(User user) {
+    public UserDto(User user, int userServicePort) {
         this.id = user.getId();
         this.nickname = user.getNickname();
         this.avatar = user.getAvatar();
+        this.userServicePort = userServicePort;
     }
 
     @Override
@@ -76,5 +79,12 @@ public class UserDto implements Serializable {
     }
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public int getUserServicePort() {
+        return userServicePort;
+    }
+    public void setUserServicePort(int userServicePort) {
+        this.userServicePort = userServicePort;
     }
 }
